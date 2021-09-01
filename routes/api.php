@@ -29,5 +29,5 @@ Route::group(['prefix'=>'product'],function(){
     Route::post('',[ProductController::class,'create'])->name('product.create');
     Route::post('/{id}',[ProductController::class,'edit'])->name('product.edit');
     Route::get('/{id}',[ProductController::class,'detail'])->name('product.detail');
-    Route::delete('/{id}',[ProductController::class,'destroy'])->name('product.destroy1');
+    Route::delete('/{id}',[ProductController::class,'destroy'])->name('product.destroy');
 });
