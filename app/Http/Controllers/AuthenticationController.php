@@ -11,13 +11,13 @@ use App\Http\Requests\Authentication\LoginRequest;
 use App\Models\User;
 class AuthenticationController extends Controller
 {
-    public function Registration(RegistrationRequest $request){
+    public function registration(RegistrationRequest $request){
         $request = $request->validated();
         $request['password']=Hash::make($request['password']);
         $user = User::create($request);
         return response()->json(['user'=>$user],200);
     }
-    public function Login(LoginRequest $request){
+    public function login(LoginRequest $request){
         if(auth()->attempt($request->validated())){
             $user = Auth::user();
             $accessToken = $user->createToken('authToken')->accessToken;
@@ -26,7 +26,4 @@ class AuthenticationController extends Controller
             return response()->json(['message'=>'Wrong account or password'],211);
         }
     }
-
-
-
 }
